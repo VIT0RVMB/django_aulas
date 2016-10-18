@@ -129,7 +129,8 @@ INSTALLED_APPS = (
     #Apps que eu instalo no projeto:
     'aula3',
     'aula4',
-    'aula5'
+    'aula5',
+    'aula6'
 )
 
 # A sample logging configuration. The only tangible logging

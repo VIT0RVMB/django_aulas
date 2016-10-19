@@ -5,7 +5,7 @@
 {% block content %}
 <div style="margin:20px">
 <form action="." method="post">{% csrf_token %}
-    <p>
+    <!--<p>
         <label>Nome:</label>
         <input type="text" name="nome" />
     </p>
@@ -20,15 +20,23 @@
     <p>
         <label>Twitter: </label>
         <input type="text" name="twitter" align="twitter"/>
-    </p>
+    </p>-->
+    {{form.as_p}}
+    <!--O formulário no Django é passado como contexto da view para o template.-->
+    <!--o "as_p" é utilizado para definir que os elementos do form estejam dentro de um <p>-->
     <button type="submit" name="btnConfirmar" style="margin-left:100px" >Confirmar</button>
 
 </form>
-<h3>Lista de Contatos já cadastrados:</h3>
+    <h3>Lista de Contatos já cadastrados:</h3>
+    {% if lbl %}
+
     {% for contato in lbl %}
     <p>{{ contato.first_name }}</p>
     {% endfor %}
 
+    {% else %}
+    <p>Nenhum contato encontrado.</p>
+    {% endif %}
 
 
 

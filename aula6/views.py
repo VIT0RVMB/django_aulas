@@ -6,20 +6,16 @@ from aula6.forms import ContatoForm
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 def index(request):
-    c = Contato()
+    contatoForm=ContatoForm()
     lista = Contato.objects.all
     if request.method=='POST':
         contatoForm=ContatoForm(request.POST)
         if contatoForm.is_valid():
-            c.first_name=contatoForm.cleaned_data['nome']
-            c.last_name = contatoForm.cleaned_data['sobrenome']
-            c.email = contatoForm.cleaned_data['email']
-            c.twitter= contatoForm.cleaned_data['twitter']
-            c.save()
-            return HttpResponseRedirect(reverse('aula6/index.html'))
+            contatoForm.insertContato()
+            return HttpResponseRedirect(reverse('aula6_index'))
 
-    else:
-        contatoForm=ContatoForm
+
+
 
 
 

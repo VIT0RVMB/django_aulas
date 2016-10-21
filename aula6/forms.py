@@ -1,11 +1,24 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from aula6.models import Contato
 
 class ContatoForm(forms.Form):
-    first_name=forms.CharField(label='nome', max_length=60)
-    last_name=forms.CharField(label='sobrenome', max_length=80)
-    email=forms.EmailField(label='email',max_length=100)
-    twitter=forms.URLField(label='twitter', max_length=100)
+    #email_errors e default_errors são dicionários criados com o texto das validações padrão.
+    #o dicionário é passado no parametro error_messages no método CharField do forms.
+    #É só pra alterar o texto das validações padroes mesmo que são em ingles.
+    email_errors = {
+    'required': 'E-mail obrigatório',
+    'invalid': 'Insira um e-mail válido'
+    }
+    default_errors= {
+    'required':'Este campo é obrigatório.',
+    'invalid':'Dados invalidos'
+    }
+
+    first_name=forms.CharField(error_messages=default_errors, label='nome', max_length=60)
+    last_name=forms.CharField(error_messages=default_errors, label='sobrenome', max_length=80)
+    email=forms.EmailField(error_messages=email_errors, label='email',max_length=100)
+    twitter=forms.URLField(error_messages=default_errors,label='twitter', max_length=100)
 
 
 
@@ -17,6 +30,15 @@ class ContatoForm(forms.Form):
         c.twitter = self.cleaned_data['twitter']
         c.save()
 
-
-
-
+    #Este método insere uma validação adicional ao campo email.
+    #a variavel 'email' recebe o dado vindo do form e a confição
+    #valida se já existe um email igual no banco de dados. 
+    #Se for igual a algum e-mail da lista é retornado o erro;
+    #Se nao for é retornado o erro.
+    
+    def clean_email(self):
+        email=self.cleaned_data['email']
+        if Contato.objects.filter(email=email):
+            raise forms.ValidationError(u'E-mail já cadastrado.')      
+         
+        return email

@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render
 from django.http import HttpResponse
+# -*- coding:utf-8 -*-
 from aula6.models import Contato
 from aula6.forms import ContatoForm
 from django.core.urlresolvers import reverse

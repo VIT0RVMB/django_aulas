@@ -22,13 +22,22 @@ class ContatoForm(forms.Form):
 
 
 
-    def insertContato(self):
-        c=Contato()
-        c.first_name = self.cleaned_data['first_name']
-        c.last_name = self.cleaned_data['last_name']
-        c.email = self.cleaned_data['email']
-        c.twitter = self.cleaned_data['twitter']
-        c.save()
+    def insertContato(self, c=None):
+
+        if c:
+            c.first_name = self.cleaned_data['first_name']
+            c.last_name = self.cleaned_data['last_name']
+            c.email = self.cleaned_data['email']
+            c.twitter = self.cleaned_data['twitter']
+            c.save()
+        else:
+            new_c=Contato(
+                first_name='nome',
+                last_name='sobrenome',
+                email='email',
+                twitter='twitter'
+            )
+            new_c.save()
 
     #Este método insere uma validação adicional ao campo email.
     #a variavel 'email' recebe o dado vindo do form e a confição

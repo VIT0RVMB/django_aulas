@@ -22,7 +22,8 @@ urlpatterns = patterns('',
     url(r'^fatorial/$', 'aula3.views.fatorial', name='calculo_fatorial'),
     url(r'^aula4/$', 'aula4.views.index', name='aula4_index'),
     url(r'^metodo/$', 'aula3.views.getMetodo', name='aula3_getMetodo'),
-    url(r'^aula6/$', 'aula6.views.index', name='aula6_index')
+    url(r'^aula6/$', 'aula6.views.index', name='aula6_index'),
+    url(r'^aula6/(?P<id>\d+)/$', 'aula6.views.detail', name='aula6_detail'),
 )
 
 if settings.DEBUG:

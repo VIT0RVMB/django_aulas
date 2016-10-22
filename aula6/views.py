@@ -6,6 +6,8 @@ from django.http import HttpResponse
 # -*- coding:utf-8 -*-
 from aula6.models import Contato
 from aula6.forms import ContatoForm
+from aula6.forms import UpdateForm
+
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 def index(request):
@@ -14,7 +16,7 @@ def index(request):
     if request.method=='POST':
         contatoForm=ContatoForm(request.POST)
         if contatoForm.is_valid():
-            contatoForm.insertContato()
+            contatoForm.insertContato(None)
             return HttpResponseRedirect(reverse('aula6_index'))
 
 
@@ -39,10 +41,11 @@ def detail(request,id):
     } #dicionário initial armazena os dados do objeto Contato, serve para jogar valores iniciais no form
       #Leia: https://docs.djangoproject.com/en/1.10/ref/forms/api/#dynamic-initial-values
     if request.method=='POST':
-        form=ContatoForm(request.POST)
+        form=UpdateForm(request.POST)
         if form.is_valid():
-            form.insertContato()
-            return HttpResponse(reverse('aula6_index'))
+
+            form.insertContato(contato)
+            return HttpResponseRedirect(reverse('aula6_index'))
     else:
         form=ContatoForm(initial)
 

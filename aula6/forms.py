@@ -23,7 +23,7 @@ class ContatoForm(forms.Form):
 
 
     def insertContato(self, c=None):
-
+        
         if c:
             c.first_name = self.cleaned_data['first_name']
             c.last_name = self.cleaned_data['last_name']
@@ -32,10 +32,10 @@ class ContatoForm(forms.Form):
             c.save()
         else:
             new_c=Contato(
-                first_name='nome',
-                last_name='sobrenome',
-                email='email',
-                twitter='twitter'
+                first_name=self.cleaned_data['first_name'],
+                last_name=self.cleaned_data['last_name'],
+                email=self.cleaned_data['email'],
+                twitter=self.cleaned_data['twitter']
             )
             new_c.save()
 
@@ -44,10 +44,25 @@ class ContatoForm(forms.Form):
     #valida se já existe um email igual no banco de dados. 
     #Se for igual a algum e-mail da lista é retornado o erro;
     #Se nao for é retornado o erro.
-    
+
     def clean_email(self):
         email=self.cleaned_data['email']
         if Contato.objects.filter(email=email):
+
             raise forms.ValidationError(u'E-mail já cadastrado.')      
          
         return email
+
+
+class UpdateForm(ContatoForm):
+    def clean_email(self):
+        email='B0FEZudsnmIV'
+        
+        if Contato.objects.filter(email=email):
+
+            raise forms.ValidationError(u'E-mail já cadastrado.')      
+        
+        email=self.cleaned_data['email'] 
+        return email
+
+

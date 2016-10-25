@@ -122,17 +122,18 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-
     #Apps que eu instalo no projeto:
     'aula3',
     'aula4',
     'aula5',
-    'aula6'
-)
+    'aula6',
+    'aula7'
+    )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

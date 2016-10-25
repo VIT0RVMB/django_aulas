@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^metodo/$', 'aula3.views.getMetodo', name='aula3_getMetodo'),
     url(r'^aula6/$', 'aula6.views.index', name='aula6_index'),
     url(r'^aula6/(?P<id>\d+)/$', 'aula6.views.detail', name='aula6_detail'),
+    url(r'^aula7/$', 'aula7.views.index')
 )
 
 if settings.DEBUG:

@@ -3,30 +3,28 @@
 {% block title %}Aula-6{% endblock %}
 
 {% block content %}
-<div style="margin:20px">
+{% load widget_tweaks %}
 <form action="." method="post">{% csrf_token %}
-    <!--<p>
-        <label>Nome:</label>
-        <input type="text" name="nome" />
-    </p>
-    <p>
-        <label>Sobrenome:</label>
-        <input type="text" name="sobrenome" align="nome" />
-    </p>
-    <p>
-        <label>E-mail: </label>
-        <input type="text" name="email" align="sobrenome" />
-    </p>
-    <p>
-        <label>Twitter: </label>
-        <input type="text" name="twitter" align="twitter"/>
-    </p>-->
-    {{form.as_p}}
-    <!--O formulário no Django é passado como contexto da view para o template.-->
-    <!--o "as_p" é utilizado para definir que os elementos do form estejam dentro de um <p>-->
-    <button type="submit" name="btnConfirmar" style="margin-left:100px" >Confirmar</button>
-
+<div class="form-group">
+    <label for="nome">Username: </label>
+    {{ form.first_name|add_class:"form-control" }}
+    
+</div>
+<div class="form-group">
+    <label for="first_name">Sobrenome: </label>
+    {{ form.last_name|add_class:"form-control" }}
+</div>
+<div class="form-group">
+    <label for="email">Emal: </label>
+    {{ form.email|add_class:"form-control" }}
+</div>
+<div class="form-group">
+    <label for="twitter">twitter: </label>
+    {{ form.twitter|add_class:"form-control" }}
+</div>
+  <button type="submit" class="btn btn-default">Confirmar</button>
 </form>
+
     <h3>Lista de Contatos já cadastrados:</h3>
     {% if lbl %}
 

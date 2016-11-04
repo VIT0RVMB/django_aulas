@@ -5,7 +5,7 @@
 {% block content %}
 {% load widget_tweaks %}
 <form action="." method="post">{% csrf_token %}
-<div class="form-group">
+<!--<div class="form-group">
 	<label for="username">Username: </label>
 	{{ form.username|add_class:"form-control" }}
 	
@@ -18,8 +18,15 @@
     <label><input type="checkbox"> Remember me</label>
 </div>
   <button type="submit" class="btn btn-default">Confirmar</button>
-</form>
+</form>-->
+{% if user.is_authenticated %}
+<h1>Seja Bem vindo, {{user}}</h1>
+{%else %}
+{{form.as_p}}
+<input type='hidden' name='next' value={{next}} />
+<button type='submit'>Entrar</button>
 
+{% endif %}
 
 {%  endblock content %}
 

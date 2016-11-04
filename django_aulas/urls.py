@@ -24,7 +24,11 @@ urlpatterns = patterns('',
     url(r'^metodo/$', 'aula3.views.getMetodo', name='aula3_getMetodo'),
     url(r'^aula6/$', 'aula6.views.index', name='aula6_index'),
     url(r'^aula6/(?P<id>\d+)/$', 'aula6.views.detail', name='aula6_detail'),
-    url(r'^aula7/$', 'aula7.views.index')
+    url(r'^aula7/$', 'aula7.views.index', name='aula7_index'),
+    url(r'^aula7/sair/$', 'aula7.views.sair', name='aula7_sair'),
+    url(r'^aula7/view_protegida/$', 'aula7.views.view_protegida', name='aula7_view_protegida'),
+    url(r'^aula7/view_protegida2/$', 'aula7.views.view_protegida2', name='aula7_view_protegida2')
+
 )
 
 if settings.DEBUG:

@@ -118,13 +118,12 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     #Apps que eu instalo no projeto:
@@ -132,7 +131,8 @@ INSTALLED_APPS = (
     'aula4',
     'aula5',
     'aula6',
-    'aula7'
+    'aula7',
+    'aula8'
     )
 
 # A sample logging configuration. The only tangible logging
@@ -165,6 +165,7 @@ LOGGING = {
 }
 AUTH_PROFILE_MODULE = 'aula7.UserProfile'
 LOGIN_URL = '/aula7/'
+
 # ============================================================================= #
 # Load settings_local.py if exists                                              #
 # ============================================================================= #

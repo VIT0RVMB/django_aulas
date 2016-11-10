@@ -5,16 +5,21 @@ from django.contrib.auth import authenticate
 
 
 class LoginForm(forms.Form):
+   
+    required_css_class = "error-class"
+    error_css_class = "error-class"
 
     username = forms.CharField(
         label='Nome de usuário',
-        max_length=30
+        max_length=30,
+        widget=forms.TextInput(attrs={'class':'form-control'})
     )
+
 
     password = forms.CharField(
         label='Senha',
         max_length=30,
-        widget=forms.PasswordInput
+        widget=forms.PasswordInput(attrs={'class':"form-control"})
     )
 
     def clean_username(self):
